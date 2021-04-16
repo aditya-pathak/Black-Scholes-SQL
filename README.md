@@ -1,4 +1,5 @@
 # Black-Scholes-SQL
+This project is work in progress to convert original MySQL version into SQL-Server version.
 Black Scholes Formulas written in MySQL. These .sql are extracted from my private option trading project.
 
 
