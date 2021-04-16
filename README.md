@@ -6,7 +6,7 @@ Variables used:
     
     @_s0 - Stock (/ underlying) price
     
-    @_t - Time to expiry (in what unit Years / days / hours?)
+    @_t - Time to expiry (in what unit Years)
     
     @_X - exercise Price (or strike price)
     
@@ -16,7 +16,7 @@ Variables used:
     
     @_P - Current option price
     
-    @_q - ????
+    @_q - International rate of return
 
 Option price:
 
