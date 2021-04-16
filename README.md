@@ -1,7 +1,22 @@
 # Black-Scholes-SQL
 This project is work in progress to convert original MySQL version into SQL-Server version.
-Black Scholes Formulas written in MySQL. These .sql are extracted from my private option trading project.
+Black Scholes Formulas written in SQL Server (T-SQL).
 
+Variables used:
+    
+    @_s0 - Stock (/ underlying) price
+    
+    @_t - Time to expiry (in what unit Years / days / hours?)
+    
+    @_X - exercise Price (or strike price)
+    
+    @_r - Risk free interest rate
+    
+    @_s - Sigma (Implied Volatility)
+    
+    @_P - Current option price
+    
+    @_q - ????
 
 Option price:
 
