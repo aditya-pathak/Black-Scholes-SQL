@@ -1,12 +1,14 @@
-/*Warning -- Work in progress, not yet converted to SQL Server function*/
-CREATE FUNCTION Delta(_CallPut int, _S0 double, _q double, _t double, _X double, _r double, _s double) 
-RETURNS double
+CREATE FUNCTION BS.Delta(@_CallPut int, @_s0 decimal(8,2), @_q decimal(8,2), @_t decimal(8,2), @_X decimal(8,2), @_r decimal(8,2), @_s decimal(8,2)) 
+RETURNS decimal(8,2)
 BEGIN
-	set @_d1 = D1(_S0, _X, _t, _r, _q, _s);
-	if _CallPut = 0 then
-		RETURN Exp(-1*_q*_t) * CND(@_d1);
+	Declare @_d1 as decimal(8,2)
+
+	set @_d1 = BS.D1(@_s0, @_X, @_t, @_r, @_q, @_s);
+	if @_CallPut = 0
+		RETURN Exp(-1*@_q*@_t) * BS.CND(@_d1);
 	else
-		RETURN Exp(-1*_q*_t) * (CND(@_d1)-1);
-	END if;
-END //
-DELIMITER ;
+		RETURN Exp(-1*@_q*@_t) * (BS.CND(@_d1)-1);
+
+	--Not reachable return but it's required.
+	Return 0.0
+END
