@@ -1,8 +1,19 @@
-DELIMITER //
-CREATE FUNCTION CND (_X double) 
-RETURNS double
+CREATE FUNCTION BS.CND(@_X decimal(8,2)) 
+RETURNS decimal(8,2)
 BEGIN
-    set @X = _X;
+    Declare
+    @X decimal(8,2)
+    , @a1 decimal(10,8)
+    , @a2 decimal(10,8)
+    , @a3 decimal(10,8)
+    , @a4 decimal(10,8)
+    , @a5 decimal(10,8)
+    , @L decimal(10,8)
+    , @K decimal(10,8)
+    , @CND1 decimal(10,8)
+
+
+    set @X = @_X;
     set @a1 = 0.31938153;
     set @a2 = -0.356563782;
     set @a3 = 1.781477937;
@@ -14,10 +25,10 @@ BEGIN
         @a2 * power(@K,2) + @a3 * power(@K,3) + @a4 * power(@K,4) + @a5 * 
         power(@K,5));
 
-    if @X < 0 then
+    if @X < 0
+    Begin
         set @CND1 = 1 - @CND1;
-    END if;
+    END
 
     RETURN @CND1;
-END //
-DELIMITER ;
+END

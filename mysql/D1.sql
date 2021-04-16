@@ -1,7 +1,5 @@
-DELIMITER //
-CREATE FUNCTION D1(_S0 double, _X double, _t double, _r double, _q double, _s double)
-RETURNS double
+CREATE FUNCTION BS.D1(@_s0 decimal(8,2), @_X decimal(8,2), @_t decimal(8,2), @_r decimal(8,2), @_q decimal(8,2), @_s decimal(8,2))
+RETURNS decimal(8,2)
 BEGIN
-    RETURN (Ln(_S0/_X)+_t*(_r-_q+Power(_s,2)/2))/(_s*Sqrt(_t));
-END //
-DELIMITER ;
+    RETURN (Log(@_s0/@_X)+@_t*(@_r-@_q+Power(@_s,2)/2))/(@_s*Sqrt(@_t));
+END

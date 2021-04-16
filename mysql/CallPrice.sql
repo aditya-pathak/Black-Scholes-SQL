@@ -1,13 +1,16 @@
-DELIMITER //
-CREATE FUNCTION CallPrice (_S0 double, _q double, _t double, _X double, _r double, _s double) 
-RETURNS double
+CREATE FUNCTION BS.CallPrice (@_s0 Decimal(8,2), @_q Decimal(8,2), @_t Decimal(8,2), @_X Decimal(8,2), @_r Decimal(8,2), @_s Decimal(8,2)) 
+RETURNS Decimal(8,2)
 BEGIN
-	set @_t = _t;
-	if _t < 0 then
-		set @_t = 0;
-	END if;
-	set @_d1 = D1(_S0, _X, @_t, _r, _q, _s);
-	set @_d2 = D2(@_d1, _s, @_t);
-    RETURN _S0 * Exp(-1*_q*@_t) * CND(@_d1)- _X * Exp(-1*_r*@_t) * CND(@_d2);
-END //
-DELIMITER ;
+	Declare @@_t as Decimal(8,2)
+	, @_d1 Decimal(8,2)
+	, @_d2 Decimal(8,2)
+
+	set @@_t = @_t;
+	if @_t < 0
+	Begin
+		set @@_t = 0;
+	END
+	set @_d1 = BS.D1(@_s0, @_X, @@_t, @_r, @_q, @_s);
+	set @_d2 = BS.D2(@_d1, @_s, @@_t);
+    RETURN @_s0 * Exp(-1*@_q*@@_t) * BS.CND(@_d1)- @_X * Exp(-1*@_r*@@_t) * BS.CND(@_d2);
+END

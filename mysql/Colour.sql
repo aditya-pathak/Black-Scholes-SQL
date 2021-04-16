@@ -1,3 +1,4 @@
+/*Warning -- Work in progress, not yet converted to SQL Server function*/
 DELIMITER //
 CREATE FUNCTION Colour(_S0 double, _q double, _t double, _X double, _r double, _s double) 
 RETURNS double
