@@ -1,0 +1,1 @@
+copy /b *.sql 1_Merged_file.sql

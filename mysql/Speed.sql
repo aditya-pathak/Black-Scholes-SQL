@@ -1,9 +1,14 @@
-CREATE FUNCTION BS.Speed(@_S0 decimal(8,2), @_q decimal(8,2), @_t decimal(8,2), @_X decimal(8,2), @_r decimal(8,2), @_s decimal(8,2)) 
-RETURNS decimal(8,2)
+
+ GO
+DROP FUNCTION If EXISTS BS.Speed
+
+ GO 
+CREATE FUNCTION BS.Speed(@_S0 Decimal(15,5), @_q Decimal(15,5), @_t decimal(8,5), @_X Decimal(15,5), @_r Decimal(15,5), @_s Decimal(15,5)) 
+RETURNS Decimal(15,5)
 BEGIN
 	Declare
-	@_d1 decimal(8,2)
-	, @_dd1 decimal(8,2)
+	@_d1 Decimal(15,5)
+	, @_dd1 Decimal(15,5)
 	
 	set @_d1 = BS.D1(@_S0, @_X, @_t, @_r, @_q, @_s);
 	set @_dd1 = (1/sqrt(2*PI())) * Exp(-1 * @_d1 * @_d1 / 2);

@@ -1,7 +1,12 @@
-CREATE FUNCTION BS.PutPrice (@_s0 decimal(8,2), @_q decimal(8,2), @_t decimal(8,2), @_X decimal(8,2), @_r decimal(8,2), @_s decimal(8,2)) 
-RETURNS decimal(8,2)
+
+ GO
+DROP FUNCTION If EXISTS BS.PutPrice
+
+ GO 
+CREATE FUNCTION BS.PutPrice (@_s0 Decimal(15,5), @_q Decimal(15,5), @_t decimal(8,5), @_X Decimal(15,5), @_r Decimal(15,5), @_s Decimal(15,5)) 
+RETURNS Decimal(15,5)
 BEGIN
-	Declare @@_t decimal(8,2), @_d1 decimal(8,2), @_d2 decimal(8,2)
+	Declare @@_t decimal(8,5), @_d1 Decimal(15,5), @_d2 Decimal(15,5)
 
 	set @@_t = @_t;
 	if @_t < 0

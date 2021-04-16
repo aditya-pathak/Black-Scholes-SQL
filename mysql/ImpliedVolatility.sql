@@ -1,7 +1,12 @@
-CREATE FUNCTION BS.ImpliedVolatility(@_CallPut int, @_S0 Decimal(8,2), @_q Decimal(8,2), @_t Decimal(8,2), @_X Decimal(8,2), @_r Decimal(8,2), @_P Decimal(8,2))
-RETURNS Decimal(8,2)
+
+ GO
+DROP FUNCTION If EXISTS BS.ImpliedVolatility
+
+ GO 
+CREATE FUNCTION BS.ImpliedVolatility(@_CallPut int, @_S0 Decimal(15,5), @_q Decimal(15,5), @_t decimal(8,5), @_X Decimal(15,5), @_r Decimal(15,5), @_P Decimal(15,5))
+RETURNS Decimal(15,5)
 BEGIN
-	Declare @_s decimal(8,2), @_increment decimal(8,2), @_GuessP decimal(8,2)
+	Declare @_s Decimal(15,5), @_increment Decimal(15,5), @_GuessP Decimal(15,5)
 	Declare @_count int, @_bigger int
 
 	set @_s = 0.4;

@@ -1,9 +1,14 @@
-CREATE FUNCTION BS.CallPrice (@_s0 Decimal(8,2), @_q Decimal(8,2), @_t Decimal(8,2), @_X Decimal(8,2), @_r Decimal(8,2), @_s Decimal(8,2)) 
-RETURNS Decimal(8,2)
+
+ GO
+DROP FUNCTION If EXISTS BS.CallPrice
+
+ GO 
+CREATE FUNCTION BS.CallPrice (@_s0 Decimal(15,5), @_q Decimal(15,5), @_t decimal(8,5), @_X Decimal(15,5), @_r Decimal(15,5), @_s Decimal(15,5)) 
+RETURNS Decimal(15,5)
 BEGIN
-	Declare @@_t as Decimal(8,2)
-	, @_d1 Decimal(8,2)
-	, @_d2 Decimal(8,2)
+	Declare @@_t as Decimal(15,5)
+	, @_d1 Decimal(15,5)
+	, @_d2 Decimal(15,5)
 
 	set @@_t = @_t;
 	if @_t < 0

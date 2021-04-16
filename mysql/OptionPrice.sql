@@ -1,7 +1,12 @@
-CREATE FUNCTION BS.OptionPrice (@_CallPut int, @_S0 decimal(8,2), @_q decimal(8,2), @_t decimal(8,2), @_X decimal(8,2), @_r decimal(8,2), @_s decimal(8,2)) 
-RETURNS decimal(8,2)
+
+ GO
+DROP FUNCTION If EXISTS BS.OptionPrice
+
+ GO 
+CREATE FUNCTION BS.OptionPrice (@_CallPut int, @_S0 Decimal(15,5), @_q Decimal(15,5), @_t decimal(8,5), @_X Decimal(15,5), @_r Decimal(15,5), @_s Decimal(15,5)) 
+RETURNS Decimal(15,5)
 BEGIN
-	Declare @_p decimal(8,2)
+	Declare @_p Decimal(15,5)
 
 	if @_CallPut = 0
 		set @_p = BS.CallPrice(@_S0, @_q, @_t, @_X, @_r, @_s);

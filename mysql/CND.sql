@@ -1,8 +1,13 @@
-CREATE FUNCTION BS.CND(@_X decimal(8,2)) 
-RETURNS decimal(8,2)
+
+ GO
+DROP FUNCTION If EXISTS BS.CND
+
+ GO 
+CREATE FUNCTION BS.CND(@_X Decimal(15,5)) 
+RETURNS Decimal(15,5)
 BEGIN
     Declare
-    @X decimal(8,2)
+    @X Decimal(15,5)
     , @a1 decimal(10,8)
     , @a2 decimal(10,8)
     , @a3 decimal(10,8)
